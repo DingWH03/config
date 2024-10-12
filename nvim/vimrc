@@ -1,0 +1,79 @@
+" Options
+
+" 编码
+set encoding=utf-8
+set fileencodings=utf-8,gb2312,gbk,gb18030,latin1
+set fileformat=unix
+set fileformats=unix,dos
+ 
+" 缩进与格式
+filetype indent on
+set autoindent
+set smarttab
+set cindent
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set softtabstop=4
+set backspace=eol,start,indent
+ 
+" 搜索
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" keymaps
+
+" 优化jk设置
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+ 
+" alt+hjkl移动行
+" mini.move
+nnoremap <M-j> :m +1<CR>==
+vnoremap <M-j> :m '>+1<CR>gv=gv
+nnoremap <M-k> :m -2<CR>==
+vnoremap <M-k> :m '<-2<CR>gv=gv
+nnoremap <M-h> <<
+vnoremap <M-h> <gv
+nnoremap <M-l> >>
+vnoremap <M-l> >gv
+ 
+" H, L jump to line home / end
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L $
+onoremap H ^
+onoremap L $
+ 
+" 切换buffer
+nnoremap <C-n> <cmd>bnext<CR>
+nnoremap <C-p> <cmd>bprevious<CR>
+ 
+" 简单的自动括号实现，给vim用的
+if !has('nvim')
+    inoremap ( ()<Left>
+    inoremap <expr> ) getline(line('.'))[col('.')-1]==')' ? '<Right>' : ')'
+ 
+    inoremap [ []<Left>
+    inoremap <expr> ] getline(line('.'))[col('.')-1]==']' ? '<Right>' : ']'
+ 
+    inoremap { {}<Left>
+    inoremap <expr> } getline(line('.'))[col('.')-1]=='}' ? '<Right>' : '}'
+ 
+    inoremap < <><Left>
+    inoremap <expr> > getline(line('.'))[col('.')-1]=='>' ? '<Right>' : '>'
+ 
+    " inoremap ' ''<Left>
+    " inoremap <expr> ' getline(line('.'))[col('.')-1]=="'" ? '<Right>' : "'"
+    " inoremap " ""<Left>
+    " inoremap <expr> " getline(line('.'))[col('.')-1]=='"' ? '<Right>' : '"'
+    " inoremap ` ``<Left>
+    " inoremap <expr> ` getline(line('.'))[col('.')-1]=='`' ? '<Right>' : '`'
+endif
+
+

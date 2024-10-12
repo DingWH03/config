@@ -1,0 +1,9 @@
+btop/
+code-server/
+configstore/
+fish/
+htop/
+neofetch/
+procps/
+!README.md
+!LICENSE
